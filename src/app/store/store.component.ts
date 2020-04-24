@@ -38,11 +38,12 @@ export class StoreComponent {
   }
 
   get pageNumbers(): number[] {
-    return Array(
-      Math.ceil(
-        this.repository.getProducts(this.selectedCategory).length /
-          this.productsPerPage.fill(0).map((x, i) => i + 1)
-      )
-    );
+    const products = this.repository.getProducts(this.selectedCategory);
+    const pages = products.length / this.productsPerPage;
+    const pageCount = Math.ceil(pages);
+    const pageNumbers = Array(pageCount)
+      .fill(0)
+      .map((x, i) => i + 1);
+    return pageNumbers;
   }
 }
