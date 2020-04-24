@@ -4,7 +4,7 @@ import { ProductRepository } from "../model/product.repository";
 @Component({
   // no css
   selector: "store",
-  //templateUrl: "store.component.html",
+  templateUrl: "store.component.html",
   template: "<store></store>",
 })
 export class StoreComponent {
