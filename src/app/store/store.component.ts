@@ -38,18 +38,11 @@ export class StoreComponent {
   }
 
   get pageNumbers(): number[] {
-    const products = this.repository.getProducts(this.selectedCategory);
-    const pages = products.length / this.productsPerPage;
-
-    // the next whole number, 0.5 => 1, 3.2 => 4
-    const pageCount = Math.ceil(pages);
-
-    // x is 0 and i is the index
-    // if page count is 3, it generate [1, 2, 3]
-    const pageNumbers = Array(pageCount)
-      .fill(0) // fills with 0
-      .map((x, i) => i + 1);
-
-    return pageNumbers;
+    return Array(
+      Math.ceil(
+        this.repository.getProducts(this.selectedCategory).length /
+          this.productsPerPage.fill(0).map((x, i) => i + 1)
+      )
+    );
   }
 }
